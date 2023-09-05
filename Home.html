@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <title>House Price Prediction</title> 
+    </head>
+    <body>
+        <h1 style="text-align: center;font-size:50px"><b>House Price Prediction</b></h1>
+        <br>
+        <h2><div style="text-align: center">Check property prices</h2>
+        <h3><div style="text-align: left">Input values</h3>
+        <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-6">
+                    <form method="post" action="/predict">
+                        <div class="form-group">
+                            <label for="GrLivArea"><p class="font-weight-bold">Ground Living Area sq.ft</p></label>
+                            <input type="number" class="form-control" name="GrLivArea">
+                        </div>
+                        <div class="form-group">
+                            <label for="OverallQual"><p class="font-weight-bold">Overall Quality</p></label>                                                       
+                            <select class="form-control" name="OverallQual">
+                                <option value="10">Very Excellent</option>
+                                <option value="9">Excellent</option>
+                                <option value="8">Very Good</option>
+                                <option value="7">Good</option>
+                                <option value="6">Above Average</option>
+                                <option value="5">Average</option>
+                                <option value="4">Below Average</option>
+                                <option value="3">Fair</option>
+                                <option value="2">Poor</option>
+                                <option value="1">Very Poor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="KitchenQual"><p class="font-weight-bold">Kitchen Quality</p></label>
+                            <select class="form-control" name="KitchenQual">
+                                <option value="4">Excellent</option>
+                                <option value="3">Good</option>
+                                <option value="2">Average</option>
+                                <option value="1">Fair</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="GarageArea"><p class="font-weight-bold">Garage Area sq.ft</p></label>
+                            <input type="number" class="form-control" name="GarageArea">
+                        </div>
+                        <div class="form-group">
+                            <label for="GarageCars"><p class="font-weight-bold">Garage Cars Space</p></label>
+                            <select class="form-control" name="GarageCars">
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="TotalBsmtSF"><p class="font-weight-bold">Total Basement Area sq.ft</p></label>
+                            <input type="number" class="form-control" name="TotalBsmtSF">
+                        </div>
+                        <div class="form-group">
+                            <label for="ExterQual"><p class="font-weight-bold">Exterior Material Quality</p></label>
+                            <select class="form-control" name="ExterQual">
+                                <option value="4">Excellent</option>
+                                <option value="3">Good</option>
+                                <option value="2">Average</option>
+                                <option value="1">Fair</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="1stFlrSF"><p class="font-weight-bold">1st Floor Area sq.ft</p></label>
+                            <input type="number" class="form-control" name="1stFlrSF">
+                        </div>
+                        <div class="form-group">
+                            <label for="BsmtQual"><p class="font-weight-bold">Basement Height</p></label>
+                            <select class="form-control" name="BsmtQual">                                        
+                                <option value="3">Excellent(100+ inches)</option>
+                                <option value="2">Good(90-99 inches)</option>
+                                <option value="1">Average(80-89 inches)</option>
+                                <option value="0">Fair(70-79 inches)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="GarageFinish"><p class="font-weight-bold">Garage Progress</p></label>
+                            <select class="form-control" name="GarageFinish">                                        
+                                <option value="2">Finished</option>
+                                <option value="1">Rough Finished</option>
+                                <option value="0">Unfinished</option>
+                            </select>                       
+                        <div class="form-group">
+                            <label for="FullBath"><p class="font-weight-bold">Full bathrooms above grade</p></label>
+                            <select class="form-control" name="FullBath">
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="TotRmsAbvGrd"><p class="font-weight-bold">Total Rooms above Grade</p></label>
+                            <select class="form-control" name="TotRmsAbvGrd">
+                                <option value="15">15</option>
+                                <option value="14">14</option>
+                                <option value="13">13</option>
+                                <option value="12">12</option>
+                                <option value="11">11</option>
+                                <option value="10">10</option>
+                                <option value="9">9</option>
+                                <option value="8">8</option>
+                                <option value="7">7</option>
+                                <option value="6">6</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>                                       
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Foundation_PConc"><p class="font-weight-bold">Foundation:Poured Concrete</p></label>
+                            <select class="form-control" name="Foundation_PConc">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="2ndFlrSF"><p class="font-weight-bold">2nd Floor Area sq.ft</p></label>
+                            <input type="number" class="form-control" name="2ndFlrSF">
+                        </div>
+                        <div class="form-group">
+                            <label for="BsmtFinSF1"><p class="font-weight-bold">Basement Work Completed sq.ft</p></label>
+                            <input type="number" class="form-control" name="BsmtFinSF1">
+                        </div>
+                        <div class="form-group">
+                            <label for="Fireplaces"><p class="font-weight-bold">Number of Fireplaces</p></label>
+                            <select class="form-control" name="Fireplaces">
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="LotArea"><p class="font-weight-bold">Lot Area sq.ft</p></label>
+                            <input type="number" class="form-control" name="LotArea">
+                        </div>
+                        <div class="form-group">
+                            <label for="LotFrontage"><p class="font-weight-bold">Lot Frontage</p></label>
+                            <input type="number" class="form-control" name="LotFrontage">
+                        </div>
+                        <div class="form-group">
+                            <label for="MasVnrArea"><p class="font-weight-bold">Masonry veneer area sq.ft</p></label>
+                            <input type="number" class="form-control" name="MasVnrArea">
+                        </div>
+                        <div class="form-group">
+                            <label for="BsmtFinType1"><p class="font-weight-bold">Rating of Finished Basement</p></label>
+                            <select class="form-control" name="BsmtFinType1">
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Predict">                                 
+                    </form>
+                </div>                       
+            </div>
+        </div>        
+    </body>   
+</html>        
+
